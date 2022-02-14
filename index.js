@@ -43,7 +43,16 @@ app.get("/info", (req, res) => {
 app.get("/:user", (req, res) => {//Ten que ir última para non tomar o valor de outra para :user
     const user = req.params.user;
     res.render("user", { user });
-})
+});
+
+//middleware para manejo de error 404 cuando no existe la página a la que llama el usuario
+app.use((req, res, next) => {
+    res.render("error404", {
+        title: "Error!!!",
+        message: "La página que indica no existe"
+    });
+    next();
+});
 
 app.listen("3000", () => {
     console.log("Servidor funcionando en localhost:3000");
