@@ -24,16 +24,16 @@ app.set("view engine", "pug");//indicamos que usaremos pug como motor de plantil
 
 app.get("/", (req, res) => {
     res.render("home",  {
-        createdBy: "unha variable",
-        creationDate: "un día destes"
+        title: "Express!",
+        creationDate: "12-2-2022"
     });
 });
 
-app.get("/seccionWrite", (req, res) => {
-    res.write(`
-    <h1>Respondendo con write</h1>
-    <p>...</p>
-    <a href="/">Volver</a>`);
+app.get("/info", (req, res) => {
+    res.render("info",  {
+        title: "Express!",
+        creationDate: "12-2-2022"
+    });
 });
 
 app.listen("3000", () => {
