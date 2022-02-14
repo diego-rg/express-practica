@@ -24,6 +24,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.set("views", path.join(__dirname, "views"));//Indica que as views quevamos a usar estarán no directorio actual/views
 app.set("view engine", "pug");//indicamos que usaremos pug como motor de plantillas
 
+app.use("/static", express.static(path.join(__dirname, "public")));
+
 app.get("/", (req, res) => {
     res.render("home",  {
         title: "Express!",
@@ -38,7 +40,10 @@ app.get("/info", (req, res) => {
     });
 });
 
-app.use("/static", express.static(path.join(__dirname, "public")));
+app.get("/:user", (req, res) => {//Ten que ir última para non tomar o valor de outra para :user
+    const user = req.params.user;
+    res.render("user", { user });
+})
 
 app.listen("3000", () => {
     console.log("Servidor funcionando en localhost:3000");
