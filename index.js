@@ -11,6 +11,8 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
+
+
 app.disable("x-powered-by");//Desactiva nos headers da response a info de que a app usa express
 
 app.set("env", "development");//Indicalle a express que estamos en desarrollo, non en producción
@@ -35,6 +37,8 @@ app.get("/info", (req, res) => {
         creationDate: "12-2-2022"
     });
 });
+
+app.use("/static", express.static(path.join(__dirname, "public")));
 
 app.listen("3000", () => {
     console.log("Servidor funcionando en localhost:3000");
