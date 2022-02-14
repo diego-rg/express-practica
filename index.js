@@ -29,6 +29,13 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/seccionWrite", (req, res) => {
+    res.write(`
+    <h1>Respondendo con write</h1>
+    <p>...</p>
+    <a href="/">Volver</a>`);
+});
+
 app.listen("3000", () => {
     console.log("Servidor funcionando en localhost:3000");
 });
