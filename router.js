@@ -1,7 +1,7 @@
 //router para as rutas
-import home from "./routes/home";
-import info from "./routes/info";
-import user from "./routes/user";
+import home from "./routes/home.js";
+import info from "./routes/info.js";
+import user from "./routes/user.js";
 
 export default app => {
     app.use("/", home);
