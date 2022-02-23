@@ -3,6 +3,7 @@ import express from "express";//Express será o que transforma o cñodigo da pla
 import morgan from "morgan";//HTTP request logger middleware. Fai logs das request e da info delas
 import bodyParser from "body-parser";//middleware que cando recibe unha petición parsea o que recibe e gárdao no body da request
 import router from "./router.js";//Importamos router coas rutas
+import { connect } from "./socket.js";
 
 //Fix para que funcione __dirname con "type": "module" de package.json
 import { fileURLToPath } from 'url';
@@ -37,5 +38,6 @@ app.use((req, res, next) => {
 });
 
 app.listen("3000", () => {
+    connect();//socket
     console.log("Servidor funcionando en localhost:3000");
 });
